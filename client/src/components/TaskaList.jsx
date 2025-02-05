@@ -16,7 +16,7 @@ export function TasksList(){
     }, []);
 
     return <div>
-        {tasks.map(task => (
+        {tasks.map((task) => (
             <TaskCard key={ task.id } task={ task } />
         ))}
     </div>;
