@@ -1,13 +1,13 @@
-from pathlib import Path
+import os
+from config.env import BASE_DIR, env
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+env.read_env(os.path.join(BASE_DIR, '.env'))
 
+SECRET_KEY = env('SECRET_KEY')
 
-SECRET_KEY = 'django-insecure--gpv&-@894$h#ao1o^_*mncyk9h9j$9(7x4ra+#&b11zp8!jtx'
+DEBUG = env.bool('DJANGO_DEBUG', default=True)
 
-DEBUG = True
-
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'corsheaders',
@@ -33,7 +33,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django_crud_api.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -51,7 +51,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_crud_api.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -100,3 +100,4 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+
