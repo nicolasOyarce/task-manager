@@ -3,6 +3,7 @@ import { createTask, deleteTask, updateTask, getTask } from '../api/task.api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
+import  { Navigation } from "../components/Navigation"
 
 export function TaskFormPage() {
 
@@ -52,53 +53,56 @@ export function TaskFormPage() {
     }, []);
 
     return (
-        <div className='max-w-xl mx-auto'>
-            <form onSubmit={onSubmit}>
-                <input
-                    type="text"
-                    placeholder="Title"
-                    {...register("title", { required: true })}
-                    className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
-                />
-                {errors.title && <span>This field is required</span>}
+        <div>
+            <Navigation />
+            <div className='max-w-xl mx-auto'>
+                <form onSubmit={onSubmit}>
+                    <input
+                        type="text"
+                        placeholder="Title"
+                        {...register("title", { required: true })}
+                        className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
+                    />
+                    {errors.title && <span>This field is required</span>}
 
-                <textarea
-                    rows="3"
-                    placeholder="Description"
-                    {...register("description", { required: true })}
-                    className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
-                ></textarea>
-                {errors.description && <span>This field is required</span>}
+                    <textarea
+                        rows="3"
+                        placeholder="Description"
+                        {...register("description", { required: true })}
+                        className='bg-zinc-700 p-3 rounded-lg block w-full mb-3'
+                    ></textarea>
+                    {errors.description && <span>This field is required</span>}
 
-                <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Save</button>
+                    <button className='bg-indigo-500 p-3 rounded-lg block w-full mt-3'>Save</button>
 
-            </form>
+                </form>
 
-            {
-                params.id && (
-                    <div className='flex justify-end'>
-                        <button 
-                            className='bg-red-500 p-3 rounded-lg w-48 mt-3'
-                            onClick={async () => {
-                                const question = window.confirm('Are you sure?')
-                                if (question) {
-                                    await deleteTask(params.id);
-                                    toast.success('Task Delete', {
-                                        position: "bottom-right",
-                                        style: {
-                                            background: '#101010',
-                                            color: '#fff'
-                                        }
-                                    });
-                                    navigate('/tasks');
-                                }
-                            }}
-                        >
-                            Delete
-                        </button>
-                    </div>
-                )
-            }
+                {
+                    params.id && (
+                        <div className='flex justify-end'>
+                            <button 
+                                className='bg-red-500 p-3 rounded-lg w-48 mt-3'
+                                onClick={async () => {
+                                    const question = window.confirm('Are you sure?')
+                                    if (question) {
+                                        await deleteTask(params.id);
+                                        toast.success('Task Delete', {
+                                            position: "bottom-right",
+                                            style: {
+                                                background: '#101010',
+                                                color: '#fff'
+                                            }
+                                        });
+                                        navigate('/tasks');
+                                    }
+                                }}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    )
+                }
+            </div>
         </div>
     );
 }

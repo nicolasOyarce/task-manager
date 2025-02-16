@@ -9,13 +9,8 @@ router.register(r"tasks", views.TaskViewSet, 'tasks')
 urlpatterns = [
     path("api/v1/", include(router.urls)),
 
-    # Endpoint que genera el esquema en formato OpenAPI
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
-
-    # Swagger UI para visualizar la API
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
-
-    # ReDoc UI (otra alternativa para visualizar la API)
     path('api/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
 ]
 
