@@ -1,4 +1,29 @@
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom'
+
 export function ResetPassword() {
+
+    const [formData, setFormData] = useState({
+        email: '',
+    });
+
+    const { email } = formData;
+
+    const handleChange = (e) => {
+        setFormData( (prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        }));
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        toast.success('Email Sent', {
+            position: "bottom-right",
+        });
+    }
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
             <div className="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-2xl shadow-lg">
@@ -13,21 +38,25 @@ export function ResetPassword() {
                         <input
                             id="email"
                             type="email"
+                            name='email'
                             className="w-full px-3 py-2 mt-1 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                            onChange={handleChange}
+                            value={email}
                             required
                         />
                     </div>
                     <button
                         type="submit"
                         className="w-full py-2 mt-4 text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        onClick={handleSubmit}
                     >
                         Send
                     </button>
                 </form>
                 <p className="text-center text-sm text-gray-400">
-                    <a href="#" className="text-indigo-400 hover:underline">
-                        Don&apos;t have an account?
-                    </a>
+                    <p className="text-indigo-400 hover:underline">
+                        <Link to='/login'>Go back to login</Link>
+                    </p>
                 </p>
             </div>
         </div>

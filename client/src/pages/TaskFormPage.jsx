@@ -55,7 +55,7 @@ export function TaskFormPage() {
     return (
         <div>
             <Navigation />
-            <div className='max-w-xl mx-auto'>
+            <div className='max-w-xl mx-auto pt-7'>
                 <form onSubmit={onSubmit}>
                     <input
                         type="text"

@@ -5,7 +5,7 @@ export function LoginPage() {
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
             <div className="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-2xl shadow-lg">
                 <div className="flex justify-center">
-                    <span className="text-3xl text-indigo-400 font-bold">Tasks App</span>
+                    <Link to={'/tasks'} className="text-3xl text-indigo-400 font-bold">Tasks App</Link>
                 </div>
                 <h2 className="text-center text-2xl font-semibold text-white">
                     Sign in your account

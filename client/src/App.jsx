@@ -14,7 +14,8 @@ function App() {
       <div className="container mx-auto">
         <Routes>
 
-          <Route path='/' element={<Navigate to="/login" />} />
+          <Route path='/' element={<Navigate to="/tasks" />} />
+          
           <Route path='/login' element={<LoginPage  />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/reset_password' element={<ResetPassword />} />
