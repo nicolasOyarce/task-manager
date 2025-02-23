@@ -117,12 +117,12 @@ SIMPLE_JWT = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Task API',
-    'DESCRIPTION': 'Documentación de la API con drf-spectacular',
+    'DESCRIPTION': 'Documentation API with drf-spectacular',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
 
-AUTH_USER_MODEL = 'authentication.UserAccount'
+AUTH_USER_MODEL = 'authentication.User'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
@@ -145,9 +145,4 @@ DJOSER = {
     'SEND_CONFIRMATION_EMAIL': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'USERNAME_RESET_CONFIRM_RETYPE': True,
-    'SERIALIZERS': {
-        'user_create': 'authentication.serializers.UserCreateSerializer',
-        'user': 'authentication.serializers.UserSerializer',
-        'user_delete': 'djoser.serializers.UserDeleteSerializer',
-    }
 }
