@@ -7,6 +7,7 @@ import { RegisterPage } from './pages/auth/RegisterPage'
 import { NewPassword } from './pages/auth/NewPassword'
 import { ResetPassword } from './pages/auth/ResetPassword'
 import { Activate } from './pages/auth/Activate'
+import { NotFoundPage } from './pages/NotFoundPage'
 
 function App() {
   return (
@@ -25,6 +26,8 @@ function App() {
           <Route path='/tasks' element={<TasksPage />} />
           <Route path='/task-create' element={<TaskFormPage />} />
           <Route path='/tasks/:id' element={<TaskFormPage />} />
+
+          <Route path='*' element={<NotFoundPage />} />
 
         </Routes>
         <Toaster />

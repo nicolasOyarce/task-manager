@@ -8,12 +8,14 @@ import { useNavigate } from 'react-router-dom';
 export function RegisterPage() {
 
     const [formData, setFormData] = useState({
+        first_name: '',
+        last_name: '',
         email: '',
         password: '',
         re_password: ''
     });
 
-    const { email, password, re_password } = formData;
+    const { first_name, last_name, email, password, re_password } = formData;
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -39,6 +41,8 @@ export function RegisterPage() {
                 position: "bottom-right",
             });
             const userData = {
+                first_name,
+                last_name,
                 email,
                 password,
                 re_password
@@ -72,6 +76,36 @@ export function RegisterPage() {
                     Create an account 
                 </h2>
                 <form className="space-y-4">
+                    <div className="flex space-x-4">
+                        <div className="flex-1">
+                            <label className="block text-sm font-medium text-gray-300" htmlFor="first_name">
+                                First Name
+                            </label>
+                            <input
+                                id="first_name"
+                                type="text"
+                                name='first_name'
+                                className="w-full px-3 py-2 mt-1 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                onChange={handleChange}
+                                value={first_name}
+                                required
+                            />
+                        </div>
+                        <div className="flex-1">
+                            <label className="block text-sm font-medium text-gray-300" htmlFor="last_name">
+                                Last Name
+                            </label>
+                            <input
+                                id="last_name"
+                                type="text"
+                                name='last_name'
+                                className="w-full px-3 py-2 mt-1 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                onChange={handleChange}
+                                value={last_name}
+                                required
+                            />
+                        </div>
+                    </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-300" htmlFor="email">
                             Email address

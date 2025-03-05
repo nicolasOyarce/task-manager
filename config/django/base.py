@@ -1,5 +1,6 @@
 import os
 from config.env import BASE_DIR, env
+from datetime import timedelta
 
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
@@ -112,7 +113,14 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('JWT',),
+    'AUTH_HEADER_TYPES': (
+        'JWT',
+        'Bearer'),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=120),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=60),
+    'SIGNING_KEY': env('SECRET_KEY_JWT'),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
 
 SPECTACULAR_SETTINGS = {
@@ -145,4 +153,9 @@ DJOSER = {
     'SEND_CONFIRMATION_EMAIL': True,
     'PASSWORD_RESET_CONFIRM_RETYPE': True,
     'USERNAME_RESET_CONFIRM_RETYPE': True,
+    'SERIALIZERS': {
+        'user_create': 'authentication.serializers.CreateUserSerializer',
+        'user': 'authentication.serializers.UserSerializer',
+        'user_delete': 'djoser.serializers.UserDeleteSerializer',
+    },
 }
