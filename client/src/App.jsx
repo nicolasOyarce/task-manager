@@ -8,6 +8,7 @@ import { NewPassword } from './pages/auth/NewPassword'
 import { ResetPassword } from './pages/auth/ResetPassword'
 import { Activate } from './pages/auth/Activate'
 import { NotFoundPage } from './pages/NotFoundPage'
+import { Home } from './pages/Home'
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <div className="container mx-auto">
         <Routes>
 
-          <Route path='/' element={<Navigate to="/tasks" />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/' element={<Navigate to="/home" />} />
           
           <Route path='/login' element={<LoginPage  />} />
           <Route path='/register' element={<RegisterPage />} />
