@@ -19,10 +19,9 @@ Task Manager is a task management application designed to improve productivity t
 
 ### 🔧 Requirements
 Make sure you have installed:
-- Python (version X.X)
-- Node.js (version X.X)
+- Python (version 3.13)
+- Node.js (version 23.7)
 - Pip and Virtualenv
-- Docker (optional, if you want to containerize the application)
 
 ### 🖥 Backend
 1. Clone the repository:
