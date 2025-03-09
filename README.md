@@ -27,7 +27,7 @@ Make sure you have installed:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/task-manager.git
-   cd task-manager/backend
+   cd task-manager
    ```
 2. Create and activate a virtual environment:
    ```bash
@@ -49,7 +49,7 @@ Make sure you have installed:
 ### 🖥 Frontend
 1. Navigate to the frontend directory:
    ```bash
-   cd ../frontend
+   cd ../client
    ```
 2. Install dependencies:
    ```bash
