@@ -1,2 +1,71 @@
 ![TaskApp Banner](/build/static/taskAppBanner.png)
-# Task Manager :pencil:
+# 📌 Task Manager
+
+Task Manager is a task management application designed to improve productivity through an intuitive interface and efficient functionalities. This project serves as a demonstration of my skills as a software developer, covering both backend and frontend development, along with testing and best practices.
+
+## 🚀 Technologies Used
+
+### Backend
+- **Django Rest Framework** – REST API development.
+- **Djoser & JWT** – Authentication and authorization handling.
+- **TestCase** – Automated API testing.
+- **Virtual Environments & .env** – Secure dependency and configuration management.
+
+### Frontend
+- **React** – User interface development.
+- **Tailwind CSS** – Application styling.
+
+## ⚙️ Installation and Setup
+
+### 🔧 Requirements
+Make sure you have installed:
+- Python (version X.X)
+- Node.js (version X.X)
+- Pip and Virtualenv
+- Docker (optional, if you want to containerize the application)
+
+### 🖥 Backend
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/task-manager.git
+   cd task-manager/backend
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv  
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Configure environment variables:
+   - Create a `.env` file in the backend root directory and add the necessary configurations.
+5. Apply migrations and run the server:
+   ```bash
+   python manage.py migrate  
+   python manage.py runserver  
+   ```
+
+### 🖥 Frontend
+1. Navigate to the frontend directory:
+   ```bash
+   cd ../frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install  
+   ```
+3. Run the application:
+   ```bash
+   npm run dev  
+   ```
+
+## 🛠 Testing
+To run backend tests, use:
+```bash
+python manage.py test  
+```
+
+## 📜 License
+This project is licensed under the MIT License.
