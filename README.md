@@ -8,6 +8,7 @@ Task Manager is a task management application designed to improve productivity t
 ### Backend
 - **Django Rest Framework** – REST API development.
 - **Djoser & JWT** – Authentication and authorization handling.
+- **PostgreSQL** – Database management.
 - **TestCase** – Automated API testing.
 - **Virtual Environments & .env** – Secure dependency and configuration management.
 
@@ -21,6 +22,7 @@ Task Manager is a task management application designed to improve productivity t
 Make sure you have installed:
 - Python (version 3.13)
 - Node.js (version 23.7)
+- PostgreSQL
 - Pip and Virtualenv
 
 ### 🖥 Backend
@@ -39,7 +41,8 @@ Make sure you have installed:
    pip install -r requirements.txt
    ```
 4. Configure environment variables:
-   - Create a `.env` file in the backend root directory and add the necessary configurations.
+    - Create a `.env` file in the backend root directory and add the necessary configurations.
+    - Ensure the PostgreSQL database credentials are correctly set in the `.env` file.
 5. Apply migrations and run the server:
    ```bash
    python manage.py migrate  
