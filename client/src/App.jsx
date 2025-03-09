@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { TasksPage } from './pages/TasksPage'
-import { TaskFormPage } from './pages/TaskFormPage'
+import { TasksPage } from './pages/tasks/TasksPage'
+import { TaskFormPage } from './pages/tasks/TaskFormPage'
 import { Toaster } from 'react-hot-toast'
 import { LoginPage } from './pages/auth/LoginPage'
 import { RegisterPage } from './pages/auth/RegisterPage'

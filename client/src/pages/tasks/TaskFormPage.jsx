@@ -1,9 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { createTask, deleteTask, updateTask, getTask } from '../api/task.api';
+import { createTask, deleteTask, updateTask, getTask } from '../../api/task.api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
-import  { Navigation } from "../components/Navigation"
+import { Navigation } from "../../components/nav/Navigation"
 
 export function TaskFormPage() {
 
