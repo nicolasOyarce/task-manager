@@ -49,7 +49,7 @@ Make sure you have installed:
 ### 🖥 Frontend
 1. Navigate to the frontend directory:
    ```bash
-   cd ../client
+   cd client
    ```
 2. Install dependencies:
    ```bash
