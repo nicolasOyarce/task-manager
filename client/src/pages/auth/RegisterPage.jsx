@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { register } from '../../features/auth/authSlice';
+import { register, reset } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { Spinner } from '../../components/Spinner';
 
 export function RegisterPage() {
 
@@ -33,13 +34,8 @@ export function RegisterPage() {
         e.preventDefault();
         
         if (password !== re_password) {
-            toast.error('Passwords do not match', {
-                position: "bottom-right",
-            });
+            toast.error('Passwords do not match')
         } else {
-            toast.success('User Created', {
-                position: "bottom-right",
-            });
             const userData = {
                 first_name,
                 last_name,
@@ -53,17 +49,14 @@ export function RegisterPage() {
 
     useEffect( () => {
         if (isError) {
-            toast.error(message, {
-                position: "bottom-right",
-            });
+            toast.error(message);
         }
-        if (isSuccess) {
-            navigate('/login');
-            toast.success('An activation link has been sent to your email', {
-                position: "bottom-right",
-            });
+        if (isSuccess || user) {
+            navigate('/');
+            toast.success('An activation link has been sent to your email');
         }
-    }, []);
+        dispatch(reset());
+    }, [isError, isSuccess, user, navigate, dispatch, message]);
 
 
     return (
@@ -75,6 +68,7 @@ export function RegisterPage() {
                 <h2 className="text-center text-2xl font-semibold text-white">
                     Create an account 
                 </h2>
+                {isLoading && <Spinner />}
                 <form className="space-y-4">
                     <div className="flex space-x-4">
                         <div className="flex-1">
