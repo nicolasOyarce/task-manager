@@ -4,9 +4,9 @@ import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, reset } from '../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
-import { Spinner } from '../../components/Spinner';
+import { Spinner } from "../../components/Spinner";
 
-export function RegisterPage() {
+const RegisterPage = () => {
 
     const [formData, setFormData] = useState({
         first_name: '',
@@ -52,23 +52,25 @@ export function RegisterPage() {
             toast.error(message);
         }
         if (isSuccess || user) {
-            navigate('/');
+            navigate("/login");
             toast.success('An activation link has been sent to your email');
         }
+
         dispatch(reset());
+
     }, [isError, isSuccess, user, navigate, dispatch, message]);
 
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
             <div className="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-2xl shadow-lg">
+                {isLoading && <Spinner />}
                 <div className="flex justify-center">
-                    <span className="text-3xl text-indigo-400 font-bold">Tasks App</span>
+                    <Link to={"/home"} > <span className="text-3xl text-indigo-400 font-bold">Tasks App</span></Link>
                 </div>
                 <h2 className="text-center text-2xl font-semibold text-white">
                     Create an account 
                 </h2>
-                {isLoading && <Spinner />}
                 <form className="space-y-4">
                     <div className="flex space-x-4">
                         <div className="flex-1">
@@ -159,3 +161,5 @@ export function RegisterPage() {
         </div>
     );
 }
+
+export default RegisterPage

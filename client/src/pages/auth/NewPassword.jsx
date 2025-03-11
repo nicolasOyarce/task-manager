@@ -1,4 +1,57 @@
-export function NewPassword() {
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { resetPasswordConfirm } from '../../features/auth/authSlice'
+import { toast } from 'react-hot-toast'
+
+const NewPassword = () =>{
+
+    const { uid, token } = useParams()
+    const [formData, setFormData] = useState({
+        'new_password': '',
+        're_new_password': ''
+    })
+
+    const { new_password, re_new_password } = formData
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const { isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+
+
+    const handleChange = (e) => {
+        setFormData((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value
+        })
+        )
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const userData = {
+            uid,
+            token,
+            new_password,
+            re_new_password
+        }
+
+        dispatch(resetPasswordConfirm(userData))
+    }
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
+        if (isSuccess) {
+            navigate("/")
+            toast.success("Your password was reset successfully.")
+
+        }
+    }, [isError, isSuccess, message, navigate, dispatch])
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
             <div className="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-2xl shadow-lg">
@@ -14,6 +67,8 @@ export function NewPassword() {
                             id="password"
                             type="password"
                             className="w-full px-3 py-2 mt-1 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                            name='new_password'
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -25,12 +80,15 @@ export function NewPassword() {
                             id="password"
                             type="password"
                             className="w-full px-3 py-2 mt-1 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                            name='re_new_password'
+                            onChange={handleChange}
                             required
                         />
                     </div>
                     <button
                         type="submit"
                         className="w-full py-2 mt-4 text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                        onClick={handleSubmit}
                     >
                         Reset
                     </button>
@@ -44,3 +102,5 @@ export function NewPassword() {
         </div>
     );
 }
+
+export default NewPassword

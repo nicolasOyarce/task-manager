@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { NavigationHome } from '../components/nav/NavigationHome';
 import { Footer } from '../components/nav/Footer';
 
-export function Home() {
+const Home = () => {
     return (
         <div className="min-h-screen">
 
@@ -38,3 +38,5 @@ export function Home() {
         </div>
     );
 }
+
+export default Home;

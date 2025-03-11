@@ -1,29 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { resetPassword } from '../../features/auth/authSlice'
+import { useNavigate } from 'react-router-dom'
 
-export function ResetPassword() {
+const ResetPassword = () => {
 
     const [formData, setFormData] = useState({
-        email: '',
-    });
+        "email": "",
+    })
 
-    const { email } = formData;
+    const { email } = formData
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const { isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+
 
     const handleChange = (e) => {
-        setFormData( (prev) => ({
+        setFormData((prev) => ({
             ...prev,
             [e.target.name]: e.target.value
-        }));
+        })
+        )
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        toast.success('Email Sent', {
-            position: "bottom-right",
-        });
+        e.preventDefault()
+
+        const userData = {
+            email
+        }
+
+        dispatch(resetPassword(userData))
     }
 
+    useEffect(() => {
+        if (isError) {
+            toast.error(message)
+        }
+        if (isSuccess) {
+            navigate("/")
+            toast.success("A reset password email has been sent to you.")
+
+        }
+    }, [isError, isSuccess, message, navigate, dispatch])
+    
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
             <div className="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-2xl shadow-lg">
@@ -62,3 +86,5 @@ export function ResetPassword() {
         </div>
     );
 }
+
+export default ResetPassword;
