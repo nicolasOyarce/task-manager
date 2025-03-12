@@ -6,7 +6,7 @@ import { activate, reset } from "../../features/auth/authSlice";
 import { toast } from "react-hot-toast";
 import Spinner from "../../components/Spinner";
 
-const Activate = () => {
+const ActivatePage = () => {
 
     const { uid, token } = useParams()
     const dispatch = useDispatch()
@@ -60,4 +60,4 @@ const Activate = () => {
     );
 }
 
-export default Activate;
+export default ActivatePage;

@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, reset, getUserInfo } from "../../features/auth/authSlice";
 import { toast } from "react-hot-toast";
+import { Spinner } from "../../components/Spinner";
 
 const LoginPage = () => {
 
@@ -44,7 +44,7 @@ const LoginPage = () => {
         }
 
         if (isSuccess || user) {
-            navigate("/dashboard")
+            navigate("/tasks")
         }
 
         dispatch(reset())
@@ -55,6 +55,7 @@ const LoginPage = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900">
       <div className="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-2xl shadow-lg">
+        {isLoading && <Spinner />}
         <div className="flex justify-center">
           <Link to={"/home"} className="text-3xl text-indigo-400 font-bold">
             Tasks App

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { NavigationHome } from '../components/nav/NavigationHome';
+import { Navigation } from '../components/nav/Navigation';
 import { Footer } from '../components/nav/Footer';
 
-const Home = () => {
+const HomePage = () => {
     return (
         <div className="min-h-screen">
 
-            <NavigationHome />
+            <Navigation />
 
             <section className="text-center py-20 bg-indigo-500 text-white">
                 <h2 className="text-4xl font-bold mb-4">Organize your tasks easily</h2>
@@ -39,4 +39,4 @@ const Home = () => {
     );
 }
 
-export default Home;
+export default HomePage;

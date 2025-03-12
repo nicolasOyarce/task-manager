@@ -6,9 +6,9 @@ import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
 import NewPassword from './pages/auth/NewPassword'
 import ResetPassword from './pages/auth/ResetPassword'
-import Activate from './pages/auth/Activate'
+import ActivatePage from './pages/auth/ActivatePage'
 import { NotFoundPage } from './pages/NotFoundPage'
-import  Home from './pages/Home'
+import HomePage from './pages/HomePage'
 
 function App() {
   return (
@@ -16,14 +16,14 @@ function App() {
       <div className="container mx-auto">
         <Routes>
 
-          <Route path='/home' element={<Home />} />
+          <Route path='/home' element={<HomePage />} />
           <Route path='/' element={<Navigate to="/home" />} />
           
           <Route path='/login' element={<LoginPage  />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/reset_password' element={<ResetPassword />} />
           <Route path='/password/reset/confirm/:uid/:token' element={<NewPassword />} /> 
-          <Route path='/activate/:uid/:token' element={<Activate />} />
+          <Route path='/activate/:uid/:token' element={<ActivatePage />} />
 
           <Route path='/tasks' element={<TasksPage />} />
           <Route path='/task-create' element={<TaskFormPage />} />
