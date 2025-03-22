@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, reset, getUserInfo } from "../../features/auth/authSlice";
+import { login, reset, getUserInfo } from "../../api/auth/authSlice";
 import { toast } from "react-hot-toast";
 import { Spinner } from "../../components/Spinner";
 
@@ -50,7 +50,7 @@ const LoginPage = () => {
         dispatch(reset())
         dispatch(getUserInfo())
 
-    }, [isError, isSuccess, user, navigate, dispatch])
+    }, [isError, isSuccess, user, navigate, dispatch, message])
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900">
@@ -110,11 +110,11 @@ const LoginPage = () => {
             Login
           </button>
         </form>
-        <p className="text-center text-sm text-gray-400">
+        <div className="text-center text-sm text-gray-400">
           <p className="text-indigo-400 hover:underline">
             <Link to={"/register"}>Don&apos;t have an account?</Link>
           </p>
-        </p>
+        </div>
       </div>
     </div>
   );

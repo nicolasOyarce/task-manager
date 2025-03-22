@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { register, reset } from '../../features/auth/authSlice';
+import { register, reset } from '../../api/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from "../../components/Spinner";
 

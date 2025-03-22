@@ -1,20 +1,21 @@
-import { useState, useEffect } from 'react';
-import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetPassword } from '../../features/auth/authSlice'
-import { useNavigate } from 'react-router-dom'
+import { resetPasswordConfirm } from '../../api/auth/authSlice'
+import { toast } from 'react-hot-toast'
 
-const ResetPassword = () => {
+const NewPasswordPage = () =>{
 
+    const { uid, token } = useParams()
     const [formData, setFormData] = useState({
-        "email": "",
+        'new_password': '',
+        're_new_password': ''
     })
 
-    const { email } = formData
+    const { new_password, re_new_password } = formData
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const { isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
@@ -31,10 +32,13 @@ const ResetPassword = () => {
         e.preventDefault()
 
         const userData = {
-            email
+            uid,
+            token,
+            new_password,
+            re_new_password
         }
 
-        dispatch(resetPassword(userData))
+        dispatch(resetPasswordConfirm(userData))
     }
 
     useEffect(() => {
@@ -43,29 +47,41 @@ const ResetPassword = () => {
         }
         if (isSuccess) {
             navigate("/")
-            toast.success("A reset password email has been sent to you.")
+            toast.success("Your password was reset successfully.")
 
         }
     }, [isError, isSuccess, message, navigate, dispatch])
-    
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
             <div className="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-2xl shadow-lg">
                 <h2 className="text-center text-2xl font-semibold text-white">
-                    Enter your email
+                    Reset your password
                 </h2>
                 <form className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-gray-300" htmlFor="email">
-                            Email address
+                        <label className="flex justify-between text-sm font-medium text-gray-300" htmlFor="password">
+                            New Password
                         </label>
                         <input
-                            id="email"
-                            type="email"
-                            name='email'
+                            id="password"
+                            type="password"
                             className="w-full px-3 py-2 mt-1 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                            name='new_password'
                             onChange={handleChange}
-                            value={email}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label className="flex justify-between text-sm font-medium text-gray-300" htmlFor="password">
+                            Confirm New Password
+                        </label>
+                        <input
+                            id="password"
+                            type="password"
+                            className="w-full px-3 py-2 mt-1 text-white bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                            name='re_new_password'
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -74,17 +90,17 @@ const ResetPassword = () => {
                         className="w-full py-2 mt-4 text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                         onClick={handleSubmit}
                     >
-                        Send
+                        Reset
                     </button>
                 </form>
                 <p className="text-center text-sm text-gray-400">
-                    <p className="text-indigo-400 hover:underline">
-                        <Link to='/login'>Go back to login</Link>
-                    </p>
+                    <a href="#" className="text-indigo-400 hover:underline">
+                        Don&apos;t have an account?
+                    </a>
                 </p>
             </div>
         </div>
     );
 }
 
-export default ResetPassword;
+export default NewPasswordPage;

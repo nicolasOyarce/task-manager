@@ -3,7 +3,6 @@ import authService from "./authService";
 
 const user = JSON.parse(localStorage.getItem("user"))
 
-
 const initialState = {
     user: user ? user : null,
     userInfo: {},
@@ -110,7 +109,6 @@ export const getUserInfo = createAsyncThunk(
         }
     }
 )
-
 
 export const authSlice = createSlice({
     name: "auth",

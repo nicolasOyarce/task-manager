@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { logout, reset } from '../../features/auth/authSlice'
+import { logout, reset } from '../../api/auth/authSlice'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { IoPerson } from 'react-icons/io5'

@@ -4,8 +4,8 @@ import { TaskFormPage } from './pages/tasks/TaskFormPage'
 import { Toaster } from 'react-hot-toast'
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
-import NewPassword from './pages/auth/NewPassword'
-import ResetPassword from './pages/auth/ResetPassword'
+import NewPasswordPage from './pages/auth/NewPasswordPage'
+import ResetPasswordPage from './pages/auth/ResetPasswordPage'
 import ActivatePage from './pages/auth/ActivatePage'
 import { NotFoundPage } from './pages/NotFoundPage'
 import HomePage from './pages/HomePage'
@@ -21,9 +21,9 @@ function App() {
           
           <Route path='/login' element={<LoginPage  />} />
           <Route path='/register' element={<RegisterPage />} />
-          <Route path='/reset_password' element={<ResetPassword />} />
-          <Route path='/password/reset/confirm/:uid/:token' element={<NewPassword />} /> 
-          <Route path='/activate/:uid/:token' element={<ActivatePage />} />
+          <Route path='/reset_password' element={<ResetPasswordPage />} />
+          <Route path='/password/reset/confirm/:uid/:token' element={<NewPasswordPage />} /> 
+          <Route path='/activation</:uid/:token' element={<ActivatePage />} />
 
           <Route path='/tasks' element={<TasksPage />} />
           <Route path='/task-create' element={<TaskFormPage />} />
