@@ -4,7 +4,7 @@ const BACKEND_DOMAIN = "http://localhost:8000/api/auth";
 
 const REGISTER_URL = `${BACKEND_DOMAIN}/users/`;
 const LOGIN_URL = `${BACKEND_DOMAIN}/jwt/create`;
-const RESET_PASSWORD_URL = `${BACKEND_DOMAIN}/users/reset_password`;
+const RESET_PASSWORD_URL = `${BACKEND_DOMAIN}/users/reset_password/`;
 const RESET_PASSWORD_CONFIRM_URL = `${BACKEND_DOMAIN}/users/reset_password_confirm/`;
 const ACTIVATE_URL = `${BACKEND_DOMAIN}/users/activation/`;
 const GET_USER_INFO = `${BACKEND_DOMAIN}/users/me/`;

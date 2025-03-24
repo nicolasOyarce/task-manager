@@ -19,11 +19,11 @@ function App() {
           <Route path='/home' element={<HomePage />} />
           <Route path='/' element={<Navigate to="/home" />} />
           
-          <Route path='/login' element={<LoginPage  />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/activation/:uid/:token' element={<ActivatePage />} />
+          <Route path='/login' element={<LoginPage  />} />
           <Route path='/reset_password' element={<ResetPasswordPage />} />
           <Route path='/password/reset/confirm/:uid/:token' element={<NewPasswordPage />} /> 
-          <Route path='/activation</:uid/:token' element={<ActivatePage />} />
 
           <Route path='/tasks' element={<TasksPage />} />
           <Route path='/task-create' element={<TaskFormPage />} />

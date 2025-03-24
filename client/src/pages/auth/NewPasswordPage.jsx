@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { resetPasswordConfirm } from '../../service/auth/authSlice'
 import { toast } from 'react-hot-toast'
+import { Spinner } from "../../components/Spinner"
 
 const NewPasswordPage = () =>{
 
@@ -55,6 +56,7 @@ const NewPasswordPage = () =>{
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-900">
             <div className="w-full max-w-md p-8 space-y-6 bg-gray-800 rounded-2xl shadow-lg">
+                {isLoading && <Spinner />}
                 <h2 className="text-center text-2xl font-semibold text-white">
                     Reset your password
                 </h2>
