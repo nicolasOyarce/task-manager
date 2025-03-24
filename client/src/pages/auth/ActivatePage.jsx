@@ -2,7 +2,7 @@ import { VscVerifiedFilled } from "react-icons/vsc";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { activate, reset } from "../../api/auth/authSlice";
+import { activate, reset } from "../../service/auth/authSlice";
 import { toast } from "react-hot-toast";
 import Spinner from "../../components/Spinner";
 

@@ -4,10 +4,8 @@ import { Footer } from '../components/nav/Footer';
 
 const HomePage = () => {
     return (
-        <div className="min-h-screen">
-
+        <div className="min-h-screen flex flex-col">
             <Navigation />
-
             <section className="text-center py-20 bg-indigo-500 text-white">
                 <h2 className="text-4xl font-bold mb-4">Organize your tasks easily</h2>
                 <p className="text-lg mb-6">Manage your pending tasks and increase your productivity.</p>
@@ -15,7 +13,6 @@ const HomePage = () => {
                     <Link to={'/register'}>Get Started</Link>
                 </button>
             </section>
-
             <section className="py-16 px-8">
                 <h3 className="text-3xl font-semibold text-center mb-8">Main features</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -33,7 +30,6 @@ const HomePage = () => {
                     </div>
                 </div>
             </section>
-
             <Footer />
         </div>
     );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetPasswordConfirm } from '../../api/auth/authSlice'
+import { resetPasswordConfirm } from '../../service/auth/authSlice'
 import { toast } from 'react-hot-toast'
 
 const NewPasswordPage = () =>{

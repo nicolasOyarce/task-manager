@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login, reset, getUserInfo } from "../../api/auth/authSlice";
+import { login, reset, getUserInfo } from "../../service/auth/authSlice";
 import { toast } from "react-hot-toast";
 import { Spinner } from "../../components/Spinner";
 

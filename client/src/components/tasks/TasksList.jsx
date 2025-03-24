@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllTasks } from "../../api/task.api";
+import { getAllTasks } from "../../service/task.api";
 import { TaskCard } from "./TaskCard";
 
 export function TasksList(){

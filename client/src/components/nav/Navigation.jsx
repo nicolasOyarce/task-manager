@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { logout, reset } from '../../api/auth/authSlice'
+import { logout, reset } from '../../service/auth/authSlice'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { IoPerson } from 'react-icons/io5'
@@ -19,7 +19,7 @@ export function Navigation() {
 
     return (
         <div className="shadow-md py-4 px-6 flex justify-between items-center">
-            <NavLink to="/tasks">
+            <NavLink to="/home">
                 <h1 className="text-2xl font-bold text-white">Task Manager</h1>
             </NavLink>
             <div className="space-x-4 ">

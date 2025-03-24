@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { resetPassword } from '../../api/auth/authSlice'
+import { resetPassword } from '../../service/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
 
 const ResetPasswordPage = () => {

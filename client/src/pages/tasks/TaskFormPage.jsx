@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { createTask, deleteTask, updateTask, getTask } from '../../api/task.api';
+import { createTask, deleteTask, updateTask, getTask } from '../../service/task.api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { toast } from 'react-hot-toast';
