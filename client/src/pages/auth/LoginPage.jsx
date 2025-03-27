@@ -1,56 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { login, reset, getUserInfo } from "../../service/auth/authSlice";
-import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
 import { Spinner } from "../../components/Spinner";
+
 
 const LoginPage = () => {
 
-  const [formData, setFormData] = useState({
-        "email": "",
-        "password": "",
-    })
-
-    const { email, password } = formData
-
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-
-    const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
-
-    const handleChange = (e) => {
-        setFormData((prev) => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        })
-        )
-    }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        const userData = {
-            email,
-            password,
-        }
-        dispatch(login(userData))
-    }
-
-
-    useEffect(() => {
-        if (isError) {
-            toast.error(message)
-        }
-
-        if (isSuccess || user) {
-            navigate("/tasks")
-        }
-
-        dispatch(reset())
-        dispatch(getUserInfo())
-
-    }, [isError, isSuccess, user, navigate, dispatch, message])
+  const { email, password, isLoading, handleChange, handleSubmit } = useAuth();
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900">
